@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu Te Amo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mensagem">Eu Te Amo!</h1>
+        <p class="subtitulo">Para a pessoa mais incrível do mundo ❤️</p>
+        <button class="botao" onclick="mudarMensagem()">Clique em mim</button>
+    </div>
+
+    <!-- Div para os corações flutuantes -->
+    <div id="coracoes"></div>
+
+    <script>
+        function mudarMensagem() {
+            const mensagem = document.querySelector('.mensagem');
+            mensagem.textContent = 'Sempre vou te amar! 💖';
+
+            // Função para criar corações flutuantes
+            criarCoracoes();
+        }
+
+        // Função que cria corações flutuantes
+        function criarCoracoes() {
+            const coracoesContainer = document.getElementById('coracoes');
+            const numeroDeCoracoes = 10;  // Quantidade de corações a aparecer
+
+            for (let i = 0; i < numeroDeCoracoes; i++) {
+                const coracao = document.createElement('div');
+                coracao.classList.add('coracao');
+                coracao.style.left = `${Math.random() * 100}vw`; // Posição aleatória
+                coracao.style.animationDuration = `${Math.random() * 2 + 3}s`; // Duração aleatória
+
+                coraçõesContainer.appendChild(coracao);
+
+                // Remover o coração após a animação
+                setTimeout(() => {
+                    coracao.remove();
+                }, 5000); // O tempo de remoção deve ser maior que a animação
+            }
+        }
+    </script>
+</body>
+</html>
